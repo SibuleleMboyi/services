@@ -14,5 +14,6 @@ export class TasksService {
       status: 'OPEN'
     }
     this.tasks.update((oldTasks) => [...oldTasks, newTask])
+    console.log(this.tasks)
   }
 }
