@@ -1,9 +1,9 @@
 import {Injectable, signal} from "@angular/core";
 import {Task, TaskStatus} from "./task.model";
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 export class TasksService {
   private tasks = signal<Task[]>([])
 
@@ -21,7 +21,7 @@ export class TasksService {
   public updateTaskStatus(taskId: string, newStatus: TaskStatus) {
     this.tasks.update((oldTasks) =>
       oldTasks.map((task) =>
-        taskId? {...task, status: newStatus } : task)
+        taskId === task.id? {...task, status: newStatus } : task)
     )
   }
 }
