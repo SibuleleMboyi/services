@@ -1,7 +1,7 @@
 import { Component, computed, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { Task, TaskStatus } from '../../task.model';
+import {Task, TaskStatus, TaskStatusOptions} from '../../task.model';
 import {TasksService} from "../../tasks.service";
 
 @Component({
@@ -12,6 +12,8 @@ import {TasksService} from "../../tasks.service";
   styleUrl: './task-item.component.css',
 })
 export class TaskItemComponent {
+  public taskStatusOptions = TaskStatusOptions;
+
   constructor(private tasksService: TasksService) {}
 
   task = input.required<Task>();

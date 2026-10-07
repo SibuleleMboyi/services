@@ -2,17 +2,20 @@ import {Component, computed, inject, signal} from '@angular/core';
 
 import { TaskItemComponent } from './task-item/task-item.component';
 import {TasksService} from "../tasks.service";
+import {TaskStatusOptions} from "../task.model";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-tasks-list',
   standalone: true,
   templateUrl: './tasks-list.component.html',
   styleUrl: './tasks-list.component.css',
-  imports: [TaskItemComponent],
+  imports: [TaskItemComponent, ReactiveFormsModule],
 })
 export class TasksListComponent {
   private selectedFilter = signal<string>('all');
   private tasksService = inject(TasksService);
+  public taskStatusOptions = TaskStatusOptions;
 
   tasks = computed(() => {
     switch (this.selectedFilter()) {
